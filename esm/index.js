@@ -61,7 +61,7 @@ function checkInternal(args) {
         const value = args[i];
         const type = args[i+1];
         if (! (value instanceof type)) {
-            return i/2;
+            return i;
         }
     }
     return -1;
@@ -69,7 +69,9 @@ function checkInternal(args) {
 export function force(...args) {
     const failureIndex = checkInternal(args);
     if (failureIndex >= 0) {
-        throw new TypeError(`Value at index #${failureIndex}, ${String(value)}, is not an instance of ${toTypeName(type)}`);
+        const value = args[failureIndex];
+        const type = args[failureIndex+1];
+        throw new TypeError(`Value at index #${failureIndex/2}, ${String(value)}, is not an instance of ${toTypeName(type)}`);
     }
     // Everything is OK
 }
