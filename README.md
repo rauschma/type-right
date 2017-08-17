@@ -16,6 +16,8 @@ import * as tr from 'type-right';
 
 ## Using `instanceof` for primitive values
 
+Having to choose between `typeof` and `instanceof` is annoying. TypeRight uses [`Symbol.hasInstance`](http://exploringjs.com/es6/ch_oop-besides-classes.html#_property-key-symbolhasinstance-method) to fix this:
+
 ```js
 console.log('abc' instanceof tr.PrimitiveString); // true
 console.log(null instanceof tr.PrimitiveNull); // true
@@ -35,7 +37,7 @@ tr.force('abc', tr.union(tr.PrimitiveString, tr.PrimitiveUndefined)); // ok
 tr.force(undefined, tr.union(tr.PrimitiveString, tr.PrimitiveUndefined)); // ok
 ```
 
-### Enforcing the type of parameters
+### Enforcing the types of parameters
 
 ```js
 function dist(x, y) {
