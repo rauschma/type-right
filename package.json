@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/rauschma/type-right.git"
   },
+  "typings": "typings.d.ts",
   "//": [
     "babel-cli: needed for building",
     "babel-register: needed for testing via AVA"
